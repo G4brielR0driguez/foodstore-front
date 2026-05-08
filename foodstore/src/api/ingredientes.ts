@@ -1,17 +1,5 @@
 import apiClient from "./apiClient";
-
-export interface Ingrediente {
-  id: number;
-  nombre: string;
-  descripcion?: string | null;
-  es_alergeno: boolean;
-}
-
-export interface IngredienteCreate {
-  nombre: string;
-  descripcion?: string | null;
-  es_alergeno: boolean;
-}
+import type { Ingrediente, IngredienteCreate } from "../types";
 
 export const getIngredientes = async (): Promise<Ingrediente[]> => {
   const response = await apiClient.get("/ingredientes");

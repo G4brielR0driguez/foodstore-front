@@ -1,29 +1,5 @@
 import apiClient from "./apiClient";
-import { type Categoria } from "./categorias";
-import { type Ingrediente } from "./ingredientes";
-
-export interface Producto {
-  id: number;
-  nombre: string;
-  descripcion?: string | null;
-  precio_base: number;
-  imagenes_url?: string[] | null;
-  stock_cantidad: number;
-  disponible: boolean;
-  categorias: Categoria[];
-  ingredientes: Ingrediente[];
-}
-
-export interface ProductoCreate {
-  nombre: string;
-  descripcion?: string | null;
-  precio_base: number;
-  imagenes_url?: string[] | null;
-  stock_cantidad: number;
-  disponible: boolean;
-  categoria_ids: number[];
-  ingrediente_ids: number[];
-}
+import type { Producto, ProductoCreate } from "../types";
 
 export const getProductos = async (): Promise<Producto[]> => {
   const response = await apiClient.get("/productos");

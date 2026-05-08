@@ -1,19 +1,5 @@
 import apiClient from "./apiClient";
-
-export interface Categoria {
-  id: number;
-  parent_id?: number | null;
-  nombre: string;
-  descripcion?: string | null;
-  imagen_url?: string | null;
-}
-
-export interface CategoriaCreate {
-  nombre: string;
-  parent_id?: number | null;
-  descripcion?: string | null;
-  imagen_url?: string | null;
-}
+import type { Categoria, CategoriaCreate } from "../types";
 
 export const getCategorias = async (): Promise<Categoria[]> => {
   const response = await apiClient.get("/categorias");

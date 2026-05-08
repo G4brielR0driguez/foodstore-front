@@ -1,9 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Layout } from "./components/Layout";
-import { CategoriasPage } from "./pages/CategoriasPage";
-import { IngredientesPage } from "./pages/IngredientesPage";
-import { ProductosPage } from "./pages/ProductosPage";
+import { AppRouter } from "./router/AppRouter";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,19 +9,14 @@ const queryClient = new QueryClient({
   },
 });
 
+/**
+ * Punto de entrada principal de la aplicación.
+ * Configura el QueryClient de React Query y delega el routing al AppRouter.
+ */
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Navigate to="/categorias" replace />} />
-            <Route path="categorias" element={<CategoriasPage />} />
-            <Route path="ingredientes" element={<IngredientesPage />} />
-            <Route path="productos" element={<ProductosPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AppRouter />
     </QueryClientProvider>
   );
 }
